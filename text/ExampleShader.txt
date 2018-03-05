@@ -1,0 +1,3 @@
+#modelShader
+<vertex>modelVertexShader.txt</vertex>
+<fragment>modelFragmentShader.txt</fragment>

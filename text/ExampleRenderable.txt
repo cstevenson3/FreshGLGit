@@ -1,0 +1,5 @@
+#carrot
+#other things like position, rotation and behaviour will be defined by the map file. Shaders are defaults
+<model>carrot.obj</model>
+<shader>modelShader.txt</shader>
+<shadow_shader>lightShader.txt</shadow_shader>
