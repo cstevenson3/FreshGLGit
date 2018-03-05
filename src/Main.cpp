@@ -14,6 +14,7 @@
 #include "Graphics.h"
 #include "Vector2f.h"
 #include "ShaderProgram.h"
+#include "StringHashTable.h"
 using namespace std;
 
 void testFilePrinting(){
@@ -68,8 +69,26 @@ void testFilePreloader(){
 	//cout << returned2[0] << endl;
 }
 
-int main(){
-	//testFilePreloader();
+void testStringHashTable(){
+	StringHashTable<vector<string> > tab(128);
+
+	vector<string> test = vector<string>();
+	test.push_back("yeet");
+
+	vector<string> test2 = vector<string>();
+	test2.push_back("yeet2");
+
+	tab.add("test",test);
+	tab.add("test2",test2);
+
+	vector<string> returned = tab.get("test");
+	cout << returned[0] << endl;
+
+	vector<string> returned2 = tab.get("test2");
+	cout << returned2[0] << endl;
+}
+
+void runGraphics(){
 	Graphics::createWindow(200,100,"FreshGL",false,nullptr,3,3,true,false);
 	int v1 = ShaderProgram::loadShaderReturnID("text/modelVertexShader.txt",GL_VERTEX_SHADER);
 	int f1 = ShaderProgram::loadShaderReturnID("text/modelFragmentShader.txt",GL_FRAGMENT_SHADER);
@@ -89,5 +108,10 @@ int main(){
 		Graphics::refresh();
 	}
 	Graphics::closeWindow();
+}
+
+int main(){
+	//testFilePreloader();
+	testStringHashTable();
 	return 0;
 }

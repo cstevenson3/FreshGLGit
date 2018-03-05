@@ -16,7 +16,7 @@ public:
 	int id;
 	vector<ShaderProgram::Attribute> attributes;
 	vector<ShaderProgram::Uniform> uniforms;
-
+	Shader();
 	Shader(string _name, int _id, vector<ShaderProgram::Attribute> _attributes, vector<ShaderProgram::Uniform> _uniforms);
 };
 

@@ -13,3 +13,8 @@ Shader::Shader(string _name, int _id, vector<ShaderProgram::Attribute> _attribut
 	attributes = _attributes;
 	uniforms = _uniforms;
 }
+
+Shader::Shader(){
+	name = "";
+	id = 0;
+}
