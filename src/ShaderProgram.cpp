@@ -13,7 +13,10 @@
 #include <string>
 #include <vector>
 #include <iostream>
+
 using namespace std;
+
+FilePreloader ShaderProgram::files = FilePreloader(MAX_SHADERS);
 
 GLuint ShaderProgram::linkProgramReturnID(GLuint vertexShaderID, GLuint fragmentShaderID){
 	GLuint programID = glCreateProgram();
@@ -43,6 +46,18 @@ GLuint ShaderProgram::linkProgramReturnID(GLuint vertexShaderID, GLuint fragment
 }
 
 GLuint ShaderProgram::loadShaderReturnID(string fileName, GLuint type){
+	vector<string> shaderVector = files.getFile(fileName);
+	string shaderSource;
+	string line;
+	for(unsigned int i = 0; i < shaderVector.size(); i++){
+		line = shaderVector[i];
+		if(line.empty()){
+			continue;
+		}
+		shaderSource.append(line).append("\n");
+	}
+	const GLchar* shaderCode = shaderSource.c_str();
+	/* working code
 	string code;
 	ifstream shaderFile;
 	shaderFile.exceptions(ifstream::badbit);
@@ -60,7 +75,7 @@ GLuint ShaderProgram::loadShaderReturnID(string fileName, GLuint type){
 	}
 	const GLchar* shaderCode = code.c_str();
 	//cout << code.c_str() << endl;
-
+	end working code */
 	/*
 
 	ifstream infile(fileName);

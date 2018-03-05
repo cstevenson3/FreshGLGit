@@ -70,7 +70,7 @@ void testFilePreloader(){
 
 int main(){
 	//testFilePreloader();
-	Graphics::createWindow(200,100,"Yeet",false,nullptr,3,3,true,false);
+	Graphics::createWindow(200,100,"FreshGL",false,nullptr,3,3,true,false);
 	int v1 = ShaderProgram::loadShaderReturnID("text/modelVertexShader.txt",GL_VERTEX_SHADER);
 	int f1 = ShaderProgram::loadShaderReturnID("text/modelFragmentShader.txt",GL_FRAGMENT_SHADER);
 	int s1 = ShaderProgram::linkProgramReturnID(v1,f1);

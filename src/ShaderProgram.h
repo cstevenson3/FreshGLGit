@@ -15,6 +15,7 @@
 #include <GLFW/glfw3.h>
 #include "Vector3f.h"
 #include "Matrix4f.h"
+#include "FilePreloader.h"
 
 #include <vector>
 #include <string>
@@ -23,7 +24,8 @@ using namespace std;
 class ShaderProgram{
 	//TODO all the shader stuff
 private:
-
+	static FilePreloader files;
+	static const int MAX_SHADERS = 64;
 public:
 	struct Attribute{
 		int location;
@@ -36,7 +38,6 @@ public:
 		string name;
 		GLenum type;
 	};
-
 	static GLuint loadShaderReturnID(string fileName, GLuint type);
 	static GLuint linkProgramReturnID(GLuint vertexShader, GLuint fragmentShader);
 	static GLuint getUniformLocation(GLuint programID, char uniformName[]);
