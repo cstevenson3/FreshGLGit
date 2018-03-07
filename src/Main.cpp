@@ -8,6 +8,8 @@
 #include <iostream>
 #include <bitset>
 
+#include "pugixml.hpp"
+
 #include "FileBasics.h"
 #include "HashTableStringToVectorString.h"
 #include "FilePreloader.h"
@@ -15,6 +17,7 @@
 #include "Vector2f.h"
 #include "ShaderProgram.h"
 #include "StringHashTable.h"
+
 using namespace std;
 
 void testFilePrinting(){
@@ -110,8 +113,18 @@ void runGraphics(){
 	Graphics::closeWindow();
 }
 
+void testXML(){
+	pugi::xml_document doc;
+
+	pugi::xml_parse_result result = doc.load_file("text/testXML.xml");
+
+	cout << "Load result: " << result.description() << ", mesh name: " << doc.child("mesh").attribute("name").value() << endl;
+}
+
 int main(){
+	testXML();
 	//testFilePreloader();
-	testStringHashTable();
+	//testStringHashTable();
+	//runGraphics();
 	return 0;
 }
