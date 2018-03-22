@@ -118,7 +118,7 @@ void testXML(){
 
 	pugi::xml_parse_result result = doc.load_file("text/testXML.xml");
 
-	cout << "Load result: " << result.description() << ", mesh name: " << doc.child("mesh").attribute("name").value() << endl;
+	cout << "Load result: " << result.description() << ", mesh name: " << doc.child("mesh").text().get() << endl;
 }
 
 int main(){

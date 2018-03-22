@@ -5,15 +5,19 @@
  *      Author: stevosnipes
  */
 
-#ifndef SHADERPRELOADER_H_
-#define SHADERPRELOADER_H_
+#ifndef SRC_SHADERPRELOADER_H_
+#define SRC_SHADERPRELOADER_H_
 
+#include <string>
+using namespace std;
+#include "Shader.h"
 #include "StringHashTable.h"
 
 class ShaderPreloader{
 private:
 	StringHashTable<Shader> shadersTable;
 public:
+	ShaderPreloader();
 	ShaderPreloader(int capacity);
 	bool preloadShader(string fileLocation);
 	Shader getShader(string fileLocation);
@@ -22,4 +26,4 @@ public:
 
 
 
-#endif /* SHADERPRELOADER_H_ */
+#endif /* SRC_SHADERPRELOADER_H_ */

@@ -18,7 +18,7 @@ template <class ValueType>
 
 class StringHashTable{
 private:
-	const int DEFAULT_CAPACITY = 128;
+	int DEFAULT_CAPACITY = 128;
 	const string AVAILABLE_INDEX = "wwww";
 
 	int maxSize;
@@ -27,6 +27,13 @@ private:
 		return key!=AVAILABLE_INDEX;
 	}
 public:
+
+	StringHashTable& operator=(const StringHashTable& other){
+		maxSize = other.maxSize;
+		table = other.table;
+		return *this;
+	}
+
 	/* rules:
 	 * don't have more than MAX_PAIRS elements
 	 *
