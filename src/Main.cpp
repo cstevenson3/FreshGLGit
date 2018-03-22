@@ -8,8 +8,7 @@
 #include <iostream>
 #include <bitset>
 
-#include "pugixml.hpp"
-
+#include "XMLproperties.h"
 #include "FileBasics.h"
 #include "HashTableStringToVectorString.h"
 #include "FilePreloader.h"
@@ -114,11 +113,15 @@ void runGraphics(){
 }
 
 void testXML(){
+	/*
 	pugi::xml_document doc;
 
 	pugi::xml_parse_result result = doc.load_file("text/testXML.xml");
 
 	cout << "Load result: " << result.description() << ", mesh name: " << doc.child("mesh").text().get() << endl;
+	*/
+	XMLproperties props = XMLproperties("text/ExampleShader.txt");
+	cout << props.getValue("vertex") << endl;
 }
 
 int main(){
