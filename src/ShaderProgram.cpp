@@ -46,6 +46,7 @@ GLuint ShaderProgram::linkProgramReturnID(GLuint vertexShaderID, GLuint fragment
 }
 
 GLuint ShaderProgram::loadShaderReturnID(string fileName, GLuint type){
+	//cout << fileName.c_str() << endl;
 	vector<string> shaderVector = files.getFile(fileName);
 	string shaderSource;
 	string line;

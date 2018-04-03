@@ -113,6 +113,28 @@ public:
 			return table[final_index].second;
 		}
 	}
+
+	ValueType get(string key, ValueType (f)(string)){
+		int hash = HashFunctions::basicStringToIntHash(key);
+		int start_index = hash % maxSize;
+		int increment = 0;
+		bool keyNotFound = false;
+		while(table[((start_index + increment) % maxSize)].first!=key){
+			increment++;
+			if(increment >= maxSize){
+				keyNotFound = true;
+				break;
+			}
+		}
+		if(keyNotFound){
+			//vector<string> error = vector<string>();
+			//error.push_back("key not found");
+			return (f)(key);
+		}else{
+			int final_index = ((start_index + increment) % maxSize);
+			return table[final_index].second;
+		}
+	}
 };
 
 

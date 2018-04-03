@@ -22,6 +22,8 @@ public:
 	vector<ShaderProgram::Attribute> attributes;
 	vector<ShaderProgram::Uniform> uniforms;
 
+	void printShader();
+
 	Shader();
 	Shader(string _name, int _id, vector<ShaderProgram::Attribute> _attributes, vector<ShaderProgram::Uniform> _uniforms, string _vertexShaderLocation, string _fragmentShaderLocation, int _vertexShaderID, int _fragmentShaderID);
 };

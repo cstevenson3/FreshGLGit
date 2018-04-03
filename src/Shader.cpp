@@ -6,6 +6,8 @@
  */
 
 #include "Shader.h"
+#include <iostream>
+using namespace std;
 
 Shader::Shader(string _name, int _id, vector<ShaderProgram::Attribute> _attributes, vector<ShaderProgram::Uniform> _uniforms, string _vertexShaderLocation, string _fragmentShaderLocation, int _vertexShaderID, int _fragmentShaderID){
 	name = _name;
@@ -22,4 +24,26 @@ Shader::Shader(string _name, int _id, vector<ShaderProgram::Attribute> _attribut
 Shader::Shader(){
 	name = "";
 	id = 0;
+}
+
+void Shader::printShader(){
+	cout << "---------------" << endl;
+
+	cout << "Name: " << name << endl;
+
+	cout << endl;
+
+	cout << "Attributes: " << endl;
+	for(unsigned int i = 0; i < attributes.size(); i++){
+		cout << attributes[i].name << endl;
+	}
+
+	cout << endl;
+
+	cout << "Uniforms: " << endl;
+	for(unsigned int i = 0; i < uniforms.size(); i++){
+		cout << uniforms[i].name << endl;
+	}
+
+	cout << "---------------" << endl;
 }

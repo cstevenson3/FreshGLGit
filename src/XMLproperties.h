@@ -11,7 +11,7 @@
 #include "pugixml.hpp"
 using namespace pugi;
 
-#include <string>;
+#include <string>
 using namespace std;
 
 class XMLproperties{

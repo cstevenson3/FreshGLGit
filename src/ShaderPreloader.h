@@ -16,7 +16,6 @@ using namespace std;
 class ShaderPreloader{
 private:
 	StringHashTable<Shader> shadersTable;
-	Shader loadShader(string fileLocation);
 public:
 	ShaderPreloader();
 	ShaderPreloader(int capacity);

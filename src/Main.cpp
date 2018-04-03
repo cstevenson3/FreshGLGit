@@ -16,6 +16,7 @@
 #include "Vector2f.h"
 #include "ShaderProgram.h"
 #include "StringHashTable.h"
+#include "ShaderPreloader.h"
 
 using namespace std;
 
@@ -30,6 +31,9 @@ void testFileToVector(){
 	}
 }
 
+/*
+ * string to int non-unique hash
+ */
 int hash(string key, int max){
 	int sum = 0;
 	for(unsigned int i = 0; i < key.length(); i++){
@@ -124,8 +128,23 @@ void testXML(){
 	cout << props.getValue("vertex") << endl;
 }
 
+void testShaderPreloader(){
+	Graphics::createWindow(200,100,"FreshGL",false,nullptr,3,3,true,false);
+
+	ShaderPreloader tests = ShaderPreloader(128);
+	//tests.preloadShader("text/ExampleShader.txt");
+	Shader shader = tests.getShader("text/ExampleShader.txt");
+	shader.printShader();
+
+	while(!Graphics::windowCloseRequested()){
+		Graphics::refresh();
+	}
+	Graphics::closeWindow();
+}
+
 int main(){
-	testXML();
+	testShaderPreloader();
+	//testXML();
 	//testFilePreloader();
 	//testStringHashTable();
 	//runGraphics();
