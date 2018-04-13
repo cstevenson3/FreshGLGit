@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <bitset>
+#include <unordered_map>
 
 #include "XMLproperties.h"
 #include "FileBasics.h"
@@ -17,6 +18,8 @@
 #include "ShaderProgram.h"
 #include "StringHashTable.h"
 #include "ShaderPreloader.h"
+#include "LoadShader.h"
+#include "Preloader.h"
 
 using namespace std;
 
@@ -131,10 +134,18 @@ void testXML(){
 void testShaderPreloader(){
 	Graphics::createWindow(200,100,"FreshGL",false,nullptr,3,3,true,false);
 
+	/*
 	ShaderPreloader tests = ShaderPreloader(128);
 	//tests.preloadShader("text/ExampleShader.txt");
 	Shader shader = tests.getShader("text/ExampleShader.txt");
 	shader.printShader();
+	*/
+
+	Preloader<string, Shader> tests = Preloader<string, Shader>(loadShader);
+	//Shader shader = tests["text/ExampleShader.txt"];
+	tests["text/ExampleShader.txt"].id = 9999;
+	cout << tests["text/ExampleShader.txt"].id << endl;
+	tests["text/ExampleShader.txt"].printShader();
 
 	while(!Graphics::windowCloseRequested()){
 		Graphics::refresh();
@@ -142,7 +153,20 @@ void testShaderPreloader(){
 	Graphics::closeWindow();
 }
 
+void testUnorderedMap(){
+	unordered_map<string, int> map = unordered_map<string, int>();
+	map["yeet"] = 3;
+	cout << map["yo"] << endl;
+	try{
+		cout << map.at("crahs this sobobo") << endl;
+	}catch (const exception& e){
+		cout << e.what() << endl;
+	}
+
+}
+
 int main(){
+	//testUnorderedMap();
 	testShaderPreloader();
 	//testXML();
 	//testFilePreloader();
